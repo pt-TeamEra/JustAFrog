@@ -1,0 +1,19 @@
+require = sand / civil
+
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any;
+        description: Click on the "open file" button;
+        control: minimizable(true), maximizable(true), closable(true);
+        buttons: [
+            ('open file') = sand.function.openFile
+        ];
+    }
+}
+
+-- Function to open the file --
+sand.newFunction(openFile){
+    sand.openFile('path/to/your/file.ext'); -- Replace this by the real path to your file
+}
+
+civil.execute(sand.function.dialog)
