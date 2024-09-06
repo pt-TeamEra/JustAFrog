@@ -1,0 +1,27 @@
+require = sand / civil
+require = hyd
+
+sand.newFunction(window){
+    sand.newWindow{
+        title: *any;
+	      id:myWindow
+	      size: 700x700;
+        control: minimizable(true), maximizable(true), closable(true);
+	      content: *auto; --in this case (there is content) the content will be automaticly loaded
+}
+
+sand.newContent(myWindow){
+	hyd.window{ --styles the window
+	titlebar-background: red;
+	titlebar-textcolor: white;
+	window-background: red;
+	window-textcolor: white;
+}
+
+hyd.Elements{ --styles the elements
+	#helloworld: textcolor: white, textsize: 40px, textalign: center; --uses the element id to personalize
+}
+	hyd.newText[id:helloworld, content:'hello world!'] 
+}
+
+civil.execute(*all)
