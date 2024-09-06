@@ -1,0 +1,36 @@
+require = sand / civil
+require = urn / crb / hyd
+
+sand.newFunction(window){
+    sand.newWindow{
+        title: *any;          
+        id: myWindow; 
+        size: 800x600;       
+        control: minimizable(true), maximizable(true), closable(true);
+        content: *auto; 
+    }
+
+    urn.useFunction(urn & crb){
+        crb.newRenderer[
+            name: *any;
+            id: crb-webview;
+            type: web; 
+            use-native: true & {renderer: *auto(version: *latest)};
+            options: plugins(false), javascript(true);
+            visual: zoom(100%), evitFlashes(true), loadingLine(true); --turns on an fade in-out effect when reloaded to prevent flashes and activates the loading line
+        ]
+        urn.newWebview(){core(crb-webview); name('urnWeb'), setControls(#reloadButton = urnWeb.reload))} --button controls
+    };
+
+    sand.newContent(myWindow){
+        urn.urnWeb.setUrl('https://www.example.com');
+        
+        hyd.Elements{
+            #reloadButton: background: lightgray, textcolor: black, textsize: 18px, textalign: center, position: top, height: 40px, width: *auto;
+        }
+        
+        hyd.newButton[id: reloadButton, content: 'reload']
+    }
+}
+
+civil.execute(sand.function.window)
