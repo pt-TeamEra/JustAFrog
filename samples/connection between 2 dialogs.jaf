@@ -1,0 +1,24 @@
+require = sand / civil
+
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any;
+        description: eu amo jaf;
+        buttons: [
+            ('Close') = civil.kill,
+            ('new dialog') = sand.function.createNewDialog, --executes the function "createNewDialog"
+        ];
+    }
+}
+
+sand.newFunction(createNewDialog){
+    sand.newDialog{
+        title: *any;
+        description: new dialog created!;
+        buttons: [
+            ('Close') = civil.kill,
+        ];
+    }
+}
+
+civil.execute(sand.function.dialog)
