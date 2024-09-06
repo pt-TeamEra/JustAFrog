@@ -1,0 +1,18 @@
+require = sand / civil
+
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any;
+        description: THis is the original dialog;
+        control: minimizable(true), maximizable(true, onchange(sand.function.changeDescription)), closable(true); --on change execute function "changeDescription"
+        buttons: [];
+    }
+}
+
+sand.newFunction(changeDescription){
+    sand.dialogs(sand.function(dialog)){ --changes the dialog description
+        description: the window was maximized;
+    }
+}
+
+civil.execute(sand.function.dialog)
