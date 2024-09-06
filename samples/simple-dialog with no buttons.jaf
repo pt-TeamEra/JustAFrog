@@ -1,0 +1,13 @@
+require = sand / civil -- imports general modules
+
+-- function to create a dialog window --
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any; -- defines a random title (default: JustAFrog)
+        description: hello world; -- sets de description as "hello world"
+        buttons: []; -- no buttons
+    }
+}
+
+-- executes the dialog function --
+civil.execute(sand.function.dialog)
