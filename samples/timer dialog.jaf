@@ -1,0 +1,14 @@
+require = sand / civil
+
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any;
+        description: This dialog is going to close automaticly after 3 seconds;
+        control: minimizable(true), maximizable(true), closable(true);
+        buttons: [];
+    }
+
+    sand.clockSet(3000).when(0)then(civil.kill); --use of clock to set a timer, when the timer value reaches 0 the process dies
+}
+
+civil.execute(sand.function.dialog)
