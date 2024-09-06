@@ -1,0 +1,12 @@
+require = sand / civil
+
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any;
+        description: just close this dialog;
+	      control: minimizable(false), maximizable(false), closable(true) --defines window controls
+        buttons: [];
+    }
+}
+
+civil.execute(sand.function.dialog)
