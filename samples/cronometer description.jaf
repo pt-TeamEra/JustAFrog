@@ -1,0 +1,14 @@
+require = sand / civil
+
+sand.newFunction(dialog){
+    sand.newDialog{
+        title: *any;
+        description: $nim, --uses the variable called "nim"
+        control: minimizable(true), maximizable(true), closable(true);
+        buttons: [];
+    }
+
+  sand.CluckSet(*inf).createValue('nim' = sand.this.Cluck.value + "s") -- creates a cronometer using "CluckSet" (NOT "ClockSet") and creates a variable with the same value as the cronomether value + the letter s
+  -it updates automaticly-
+
+civil.execute(sand.function.dialog)
