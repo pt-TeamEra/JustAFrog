@@ -1,0 +1,30 @@
+require = sand / civil
+require = urn / crb
+
+sand.newFunction(window){
+    sand.newWindow{
+        title: *any;          
+        id: myWindow; 
+        size: 800x600;       
+        control: minimizable(true), maximizable(true), closable(true);
+        content: *auto; 
+    }
+
+    urn.useFunction(urn & crb){
+	    crb.newRenderer[ --new renderer using carbonScript
+	      name: *any;
+	      id:crb-webview; --adds an id to the renderer
+	      type: web; 
+	      use-native: true &{renderer: chromium(version: *latest)} --installs automaticly the latest version of chromium to use
+	      options: plugins(false), javascript(true); --disables plugins and enables javascript
+	      visual: zoom(100%) size(cover); --covers the window size with the webview
+	    ]
+	    urn.newWebview(){core(crb-webview); name('urnWeb')} --uses the carbon id as core and names the webview "urnWeb"
+    });
+
+    sand.newContent(myWindow){ --uses the content window to display the webview
+        urn.urnWeb.setUrl('https://www.example.com'); --change the link
+    }
+}
+
+civil.execute(sand.function.window)
