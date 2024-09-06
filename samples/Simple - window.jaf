@@ -1,0 +1,17 @@
+require = sand / civil
+
+sand.newFunction(window){
+    sand.newWindow{
+        title: *any;
+	      id:myWindow; --adding an window id
+	      size: 700x700;
+        control: minimizable(true), maximizable(true), closable(true);
+	      content: *auto; --when there is no content associated with this window it just makes an white background
+}
+
+sand.newContent(myWindow){
+--where u put your content
+}
+
+
+civil.execute(*all) --execute all functions
